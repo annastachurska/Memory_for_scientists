@@ -6,14 +6,13 @@
 
 body {
     height: 100vh;
-    /*width: 100vw;*/
     background-color: slateblue;
     display: flex;
 }
 
 .game_container{
     margin: auto;
-    width: 640px;
+    width: 1200px;
     height: 640px;
     display: flex;
     flex-wrap: wrap;
@@ -23,11 +22,23 @@ body {
 
 .game_item{
     margin: 5px;
-    width: calc(25% - 10px);
-    height: calc(33.333% - 10px);
+    width: calc((100%/6) - 10px);
+    height: calc(25% - 10px);
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.5s;
+}
+
+.game_item{
+    border-radius: 5px;
+}
+
+.game_item[data-des="name"] {
+    border: 3px solid yellow;
+}
+
+.game_item[data-des="description"] {
+    border: 3px solid red;
 }
 
 .game_item:active{
@@ -40,21 +51,41 @@ body {
 }
 
 .game_item_front, .game_item_back{
-    border: 3px solid yellow;
+    color: white;
     position: absolute;
     width: 100%;
     height: 100%;
     padding: 30px;
-    border-radius: 5px;
     background: darkolivegreen;
     backface-visibility: hidden;
 }
 
 .game_item_front{
+    padding: 30% 10%;
+    text-align: center;
     transform: rotateY(180deg);
 }
 
-img{
-    background-color: white;
+.finalSection{
+    margin: 20vh 20vw;
+    display: none;
+    z-index: 2;
+    text-align: center;
+    width: 60vw;
+    height: 50vh;
+    border: 5px solid green;
+    position: absolute;
+    background-color: yellowgreen;
 }
+
+.finalTitle{
+    font-size: 4rem;
+    padding: 30px 15px;
+}
+
+.finalArticle{
+    font-size: 2em;
+    padding: 30px 15px;
+}
+
 
