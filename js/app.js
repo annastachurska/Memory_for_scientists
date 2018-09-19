@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function(){
         constructor(){
             this.hasFlippedCard = false;
             this.isBoardLocked = false;
-            this.items = [
+            this.items = null;
+            this.enzymes = [
                 ['helikaza', 'Helikaza', 'Rozplata podwójną helisę'],
                 ['prymaza', 'Prymaza', 'Jest polimerazą RNA'],
                 ['gyraza', 'Gyraza', 'Wprowadza superskręty'],
@@ -11,7 +12,19 @@ document.addEventListener("DOMContentLoaded", function(){
                 ['polimerazaI', 'Polimeraza I (Kornberga)', 'Jest główną polimerazą naprawczą'],
                 ['polimerazaI', 'Polimeraza I (Kornberga)', "Ma aktywność 3'-5' egzonukleazy"],
                 ['polimerazaI', 'Polimeraza I (Kornberga)', "Ma aktywność 5'-3' egzonukleazy"],
-                ['polimerazaI', 'Polimeraza I (Kornberga)', 'Jest polimerazą DNA']
+                ['polimerazaI', 'Polimeraza I (Kornberga)', 'Jest polimerazą DNA'],
+                ['bialkossb', 'Białko SSB', 'Zapobiega tworzeniu helisy po rozdzieleniu nici DNA']
+            ];
+            this.transcriptionFactors = [
+                ['hif', 'HIF', 'Odpowiedź na obniżony poziom tlenu'],
+                ['nrf2', 'Nrf2', 'Odpowiedź na stres oksydacyjny'],
+                ['nfkb', 'NFkappaB', 'Regulacja odpowiedzi immunologicznej'],
+                ['smad', 'SMAD', 'Odpowiedź wywoływana przez TGFbeta'],
+                ['tfIIe', 'TFIIE', 'Transkrypcja u eukariotów'],
+                ['p53', 'p53', 'stabilność genomu (naprawa lub apoptoza)'],
+                ['srebp', 'SREBP', 'kontrola biosyntezy tłuszczów'],
+                ['stat', 'STAT', 'Odpowiedź na czynniki wzrostu i cytokiny'],
+                ['creb', 'CREB', 'Rozwój systemu nerwowego, plastyczność neuronów']
             ];
             this.counter = 0;
         }
@@ -65,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
 
         start(){
+            this.chooseGameType();
             this.createBoard();
             let self = this;
             this.cards.forEach(card => card.addEventListener('click', e => {
@@ -122,6 +136,15 @@ document.addEventListener("DOMContentLoaded", function(){
             [this.firstCard, this.secondCard] = [null, null];
         }
 
+        chooseGameType(){
+            this.selection = document.querySelector('.introduction_select').value;
+            if (this.selection === 'Replikacja u E.coli') {
+                this.items = this.enzymes;
+            } else {
+                this.items = this.transcriptionFactors;
+            }
+        }
+
         finishGame(){
             setTimeout(()=>{
                 document.querySelector('.finalSection').style.display = 'block';
@@ -131,8 +154,14 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    let game = new MemoryGame();
-    game.start();
+    document.querySelector('.introduction_button').addEventListener('click', (e) => {
+        document.querySelector('.introduction').style.display = 'none';
+        document.querySelector('.game_container').style.opacity = '1';
+        let game = new MemoryGame();
+        game.start();
+    });
+
+
 
 });
 

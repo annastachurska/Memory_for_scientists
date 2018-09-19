@@ -10,6 +10,41 @@ body {
     display: flex;
 }
 
+.introduction, .finalSection{
+    margin: 20vh 20vw;
+    z-index: 2;
+    text-align: center;
+    width: 60vw;
+    height: 50vh;
+    border: 5px solid green;
+    position: absolute;
+    background-color: yellowgreen;
+}
+
+.introduction_title{
+    font-size: 2.5rem;
+    padding: 30px 15px;
+}
+
+
+.introduction_article{
+    font-size: 1.5rem;
+    padding: 10px 15px 30px 15px;
+}
+
+.introduction_select{
+    font-size: 1.1rem;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+.introduction_button{
+    font-size: 1rem;
+    padding: 5px;
+    color: white;
+    background: darkolivegreen;
+
+}
 .game_container{
     margin: auto;
     width: 1200px;
@@ -18,6 +53,7 @@ body {
     flex-wrap: wrap;
     transform: scale(1);
     perspective: 1000px;
+    opacity: 0.5;
 }
 
 .game_item{
@@ -67,17 +103,8 @@ body {
 }
 
 .finalSection{
-    margin: 20vh 20vw;
     display: none;
-    z-index: 2;
-    text-align: center;
-    width: 60vw;
-    height: 50vh;
-    border: 5px solid green;
-    position: absolute;
-    background-color: yellowgreen;
 }
-
 .finalTitle{
     font-size: 4rem;
     padding: 30px 15px;
