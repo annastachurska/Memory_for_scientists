@@ -26,6 +26,17 @@ document.addEventListener("DOMContentLoaded", function(){
                 ['stat', 'STAT', 'Odpowiedź na czynniki wzrostu i cytokiny'],
                 ['creb', 'CREB', 'Rozwój systemu nerwowego, plastyczność neuronów']
             ];
+            this.techniques = [
+                ['fret', 'FRET', 'Oddziaływania między białkami'],
+                ['krystalografia', 'Krystalografia', 'Struktura białek'],
+                ['elisa', 'ELISA', 'Poziom wybranego białka'],
+                ['bca', 'Test BCA', 'Stężenie wszytskich białek w próbce'],
+                ['immunocytochemia', 'Immunocytochemia', 'Lokalizacja białka w komórce'],
+                ['realtimepcr', 'PCR w czasie rzeczywistym', 'Ekspresja genów na poziomie mRNA'],
+                ['emsa', 'EMSA', 'Wiązanie czynników transkrypcyjnych do DNA'],
+                ['southers', 'Southern blot', 'Identyfikacja fragmentów DNA'],
+                ['kometki', 'Test kometkowy', 'Fragmentacja DNA']
+            ];
             this.counter = 0;
         }
 
@@ -140,8 +151,10 @@ document.addEventListener("DOMContentLoaded", function(){
             this.selection = document.querySelector('.introduction_select').value;
             if (this.selection === 'Replikacja u E.coli') {
                 this.items = this.enzymes;
-            } else {
+            } else if (this.selection === 'Czynniki transkrypcyjne') {
                 this.items = this.transcriptionFactors;
+            } else {
+                this.items = this.techniques;
             }
         }
 

@@ -18,7 +18,7 @@ When proper pair is visible both cards will remain visible.
 The round is measured as checking 2 cards regardless the type of cards ('name' or 'description').
 
 
-**Graphics: ** The graphic on the cards was downloaded from
+**Graphics:** The graphic on the cards was downloaded from
 https://www.iconspng.com/image/3688/funny-green-bactera
 
-**Status: ** in progress
+**Status:** in progress
