@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     class MemoryGame {
         constructor(){
-            this.hasFlippedCard = false;
+            this.isCardFlipped = false;
             this.isBoardLocked = false;
             this.items = null;
             this.enzymes = [
@@ -94,23 +94,48 @@ document.addEventListener("DOMContentLoaded", function(){
             let self = this;
             this.cards.forEach(card => card.addEventListener('click', e => {
                 self.flipCard(card);
+
             }));
+            this.setButton();
         }
 
         flipCard(e){
             if (this.isBoardLocked) return;
-            if (e == self.firstCard) return;
+            if (e == this.firstCard) return;
             e.classList.add('flip');
-            if (!this.hasFlippedCard) {
-                this.hasFlippedCard = true;
+            if (!this.isCardFlipped) {
+                this.isCardFlipped = true;
                 this.firstCard = e;
                 return;
             }
-            this.hasFlippedCard = false;
+            this.isCardFlipped = false;
             this.secondCard = e;
+            this.isBoardLocked = true;
+            this.handleEventAfterSecondCard();
+        }
+
+        handleEventAfterSecondCard() {
+            document.querySelector('.game_button').disabled = false;
+            let self = this;
+            this.id = setTimeout(() => {
+                self.unflipCards();
+                document.querySelector('.game_button').disabled = true;
+            }, 4000);
+        }
+
+        setButton(){
+            let self = this;
+            document.querySelector('.game_button').addEventListener('click', () => {
+                self.handleCheckButton();
+            });
+        }
+
+        handleCheckButton(){
             this.checkMatch();
             this.counter++;
-
+            document.querySelector('.game_score').innerText = `Ilość rund: ${this.counter}`;
+            clearTimeout(this.id);
+            document.querySelector('.game_button').disabled = true;
         }
 
         checkMatch(){
@@ -121,29 +146,27 @@ document.addEventListener("DOMContentLoaded", function(){
         disabledMatchedCards(){
             let self = this;
             this.firstCard.removeEventListener('click', e => {
-                self.flipCard(card);
+                self.flipCard(e.target);
             });
             this.secondCard.removeEventListener('click', e => {
-                self.flipCard(card);
+                self.flipCard(e.target);
             });
 
             if (document.querySelectorAll('.flip').length == this.items.length*2) {
                 this.finishGame();
             }
+            this.resetBoard();
         }
 
         unflipCards(){
             this.isBoardLocked = true;
-            let self = this;
-            setTimeout(() => {
-                self.firstCard.classList.remove('flip');
-                self.secondCard.classList.remove('flip');
-                self.resetBoard();
-            }, 1500);
+            this.firstCard.classList.remove('flip');
+            this.secondCard.classList.remove('flip');
+            this.resetBoard();
         }
 
         resetBoard(){
-            [this.hasFlippedCard, this.isBoardLocked] = [false, false];
+            [this.isCardFlipped, this.isBoardLocked] = [false, false];
             [this.firstCard, this.secondCard] = [null, null];
         }
 
@@ -161,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function(){
         finishGame(){
             setTimeout(()=>{
                 document.querySelector('.finalSection').style.display = 'block';
-                document.querySelector('.game_container').style.opacity = '0.6';
+                document.querySelector('.game').style.opacity = '0.6';
                 document.querySelector('.finalScore').innerText = this.counter;
             },2000)
         }
@@ -169,12 +192,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document.querySelector('.introduction_button').addEventListener('click', (e) => {
         document.querySelector('.introduction').style.display = 'none';
-        document.querySelector('.game_container').style.opacity = '1';
+        document.querySelector('.game').style.opacity = '1';
+        document.querySelector('.game_buttonContainer').style.display = 'flex';
         let game = new MemoryGame();
         game.start();
     });
-
-
 
 });
 
