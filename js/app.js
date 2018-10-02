@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     ['nrf2', 'Nrf2', 'Response to elevated level of reactive oxygen species'],
                     ['nfkb', 'NFkappaB', 'Regulation of immune response'],
                     ['smad', 'SMAD', 'Response triggered by TGFbeta'],
-                    ['tfIIe', 'TFIIE', "Eukariotes' transcription"],
+                    ['tfIIe', 'TFIIE', "Eukaryote transcription"],
                     ['p53', 'p53', 'Stability of genome (repair vs apoptosis)'],
                     ['srebp', 'SREBP', 'Control for fatty acid biosynthesis'],
                     ['stat', 'STAT', 'Response to growth factors and cytokines'],
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function(){
         handleCheckButton(){
             this.checkMatch();
             this.counter++;
-            document.querySelector('.game_score').innerText = `Ilość rund: ${this.counter}`;
+            document.querySelector('.game_score').innerText = `Number of rounds: ${this.counter}`;
             clearTimeout(this.id);
             document.querySelector('.game_button').disabled = true;
         }
@@ -174,9 +174,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
         chooseGameType(){
             this.selection = document.querySelector('.introduction_select').value;
-            if (this.selection === 'Czynniki transkrypcyjne') {
+            if (this.selection === 'Transcription factors') {
                 this.items = this.dataTable.transcriptionFactors;
-            } else if (this.selection === 'Techniki labolatoryjne'){
+            } else if (this.selection === 'Laboratory techniques'){
                 this.items = this.dataTable.techniques;
             } else {
                 this.items = this.dataTable.enzymes;
