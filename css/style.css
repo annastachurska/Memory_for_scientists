@@ -28,7 +28,6 @@ body {
     padding: 30px 15px;
 }
 
-
 .introduction_article{
     font-size: 1.5rem;
     padding: 10px 15px 30px 15px;
@@ -45,8 +44,8 @@ body {
     padding: 5px;
     color: white;
     background: darkolivegreen;
-
 }
+
 .game{
     margin: auto;
     width: 1200px;
@@ -109,6 +108,7 @@ body {
     text-align: center;
     transform: rotateY(180deg);
 }
+
 .game_buttonContainer{
     /*text-align: center;*/
     display: none;
@@ -117,15 +117,6 @@ body {
     margin: 0 auto;
 
 }
-
-
-    /*.game_button{*/
-        /*font-size: 1rem;*/
-        /*padding: 5px;*/
-        /*color: white;*/
-        /*background: darkolivegreen;*/
-    /*}*/
-
 
 .game_score{
     margin-left: 10vw;

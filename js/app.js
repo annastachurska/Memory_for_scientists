@@ -4,39 +4,41 @@ document.addEventListener("DOMContentLoaded", function(){
             this.isCardFlipped = false;
             this.isBoardLocked = false;
             this.items = null;
-            this.enzymes = [
-                ['helikaza', 'Helikaza', 'Rozplata podwójną helisę'],
-                ['prymaza', 'Prymaza', 'Jest polimerazą RNA'],
-                ['gyraza', 'Gyraza', 'Wprowadza superskręty'],
-                ['gyraza', 'Gyraza', 'Rozłącza koliste DNA po zakończeniu replikacji'],
-                ['polimerazaI', 'Polimeraza I (Kornberga)', 'Jest główną polimerazą naprawczą'],
-                ['polimerazaI', 'Polimeraza I (Kornberga)', "Ma aktywność 3'-5' egzonukleazy"],
-                ['polimerazaI', 'Polimeraza I (Kornberga)', "Ma aktywność 5'-3' egzonukleazy"],
-                ['polimerazaI', 'Polimeraza I (Kornberga)', 'Jest polimerazą DNA'],
-                ['bialkossb', 'Białko SSB', 'Zapobiega tworzeniu helisy po rozdzieleniu nici DNA']
-            ];
-            this.transcriptionFactors = [
-                ['hif', 'HIF', 'Odpowiedź na obniżony poziom tlenu'],
-                ['nrf2', 'Nrf2', 'Odpowiedź na stres oksydacyjny'],
-                ['nfkb', 'NFkappaB', 'Regulacja odpowiedzi immunologicznej'],
-                ['smad', 'SMAD', 'Odpowiedź wywoływana przez TGFbeta'],
-                ['tfIIe', 'TFIIE', 'Transkrypcja u eukariotów'],
-                ['p53', 'p53', 'stabilność genomu (naprawa lub apoptoza)'],
-                ['srebp', 'SREBP', 'kontrola biosyntezy tłuszczów'],
-                ['stat', 'STAT', 'Odpowiedź na czynniki wzrostu i cytokiny'],
-                ['creb', 'CREB', 'Rozwój systemu nerwowego, plastyczność neuronów']
-            ];
-            this.techniques = [
-                ['fret', 'FRET', 'Oddziaływania między białkami'],
-                ['krystalografia', 'Krystalografia', 'Struktura białek'],
-                ['elisa', 'ELISA', 'Poziom wybranego białka'],
-                ['bca', 'Test BCA', 'Stężenie wszytskich białek w próbce'],
-                ['immunocytochemia', 'Immunocytochemia', 'Lokalizacja białka w komórce'],
-                ['realtimepcr', 'PCR w czasie rzeczywistym', 'Ekspresja genów na poziomie mRNA'],
-                ['emsa', 'EMSA', 'Wiązanie czynników transkrypcyjnych do DNA'],
-                ['southers', 'Southern blot', 'Identyfikacja fragmentów DNA'],
-                ['kometki', 'Test kometkowy', 'Fragmentacja DNA']
-            ];
+            this.dataTable = {
+                transcriptionFactors: [
+                    ['hif', 'HIF', 'Response to diminished oxygen availability'],
+                    ['nrf2', 'Nrf2', 'Response to elevated level of reactive oxygen species'],
+                    ['nfkb', 'NFkappaB', 'Regulation of immune response'],
+                    ['smad', 'SMAD', 'Response triggered by TGFbeta'],
+                    ['tfIIe', 'TFIIE', "Eukariotes' transcription"],
+                    ['p53', 'p53', 'Stability of genome (repair vs apoptosis)'],
+                    ['srebp', 'SREBP', 'Control for fatty acid biosynthesis'],
+                    ['stat', 'STAT', 'Response to growth factors and cytokines'],
+                    ['creb', 'CREB', 'Development of nervous system, plasticity of neurons']
+                ],
+                techniques: [
+                    ['fret', 'FRET', 'Interaction between proteins'],
+                    ['krystalografia', 'Crystallography', 'Structure of protein'],
+                    ['elisa', 'ELISA', 'Amount of selected protein'],
+                    ['bca', 'BCA assay', 'Concentration of all proteins in sample'],
+                    ['immunocytochemia', 'Immunocytochemical staining', 'Localization of protein in cell'],
+                    ['realtimepcr', 'Real-time PCR', 'Gene expression on mRNA level'],
+                    ['emsa', 'EMSA', 'DNA binding of transcription factor'],
+                    ['southers', 'Southern blot', 'Identification of DNA fragments'],
+                    ['kometki', 'Comet assay', 'DNA fragmentation']
+                ],
+                enzymes: [
+                    ['helikaza', 'Helikase', 'Unfolds double helix'],
+                    ['prymaza', 'Primase', 'RNA polimerase'],
+                    ['gyraza', 'Gyrase', 'Incorporates superhelixes'],
+                    ['gyraza', 'Gyrase', 'Unfolds circular DNA after replication'],
+                    ['polimerazaI', 'Polimerase I (Kornberga)', 'Main repair polimerase'],
+                    ['polimerazaI', 'Polimerase I (Kornberga)', "With 3'-5' exonuclease activity"],
+                    ['polimerazaI', 'Polimerase I (Kornberga)', "With 5'-3' exonuklease activity"],
+                    ['polimerazaI', 'Polimerase I (Kornberga)', 'DNA polimerase'],
+                    ['bialkossb', 'SSB protein', 'Prevents forming of helix after separation of DNA strands']
+                ]
+            };
             this.counter = 0;
         }
 
@@ -172,12 +174,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
         chooseGameType(){
             this.selection = document.querySelector('.introduction_select').value;
-            if (this.selection === 'Replikacja u E.coli') {
-                this.items = this.enzymes;
-            } else if (this.selection === 'Czynniki transkrypcyjne') {
-                this.items = this.transcriptionFactors;
+            if (this.selection === 'Czynniki transkrypcyjne') {
+                this.items = this.dataTable.transcriptionFactors;
+            } else if (this.selection === 'Techniki labolatoryjne'){
+                this.items = this.dataTable.techniques;
             } else {
-                this.items = this.techniques;
+                this.items = this.dataTable.enzymes;
             }
         }
 
