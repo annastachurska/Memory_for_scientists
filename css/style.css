@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -20,7 +21,6 @@ body {
     width: 60vw;
     height: 50vh;
     border: 5px solid green;
-    /*position: absolute;*/
     background-color: yellowgreen;
 }
 
@@ -57,9 +57,17 @@ body {
     margin: auto;
     width: 1200px;
     height: 90vh;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
+    -webkit-perspective: 1000px;
     perspective: 1000px;
 }
 
@@ -68,7 +76,12 @@ body {
     width: calc((100%/6) - 10px);
     height: calc(25% - 10px);
     position: relative;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform .5s;
+    transition: -webkit-transform .5s;
+    -o-transition: transform .5s;
+    transition: transform .5s, -webkit-transform .5s;
     transition: transform .5s;
 }
 
@@ -85,11 +98,18 @@ body {
 }
 
 .game_item:active{
+    -webkit-transform: scale(.97);
+    -ms-transform: scale(.97);
     transform: scale(.97);
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    -o-transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s;
     transition: transform .2s;
 }
 
 .game_item.flip{
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
@@ -100,19 +120,32 @@ body {
     height: 100%;
     padding: 30px;
     background: darkolivegreen;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
 .game_item_front{
     text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
 .game_buttonContainer{
     display: none;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     width: 80vw;
     margin: 0 auto;

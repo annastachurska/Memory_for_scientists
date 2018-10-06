@@ -192,12 +192,16 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    document.querySelector('.introduction_button').addEventListener('click', (e) => {
+    function handleIntroductionButton() {
         document.querySelector('.introduction').style.display = 'none';
         document.querySelector('.game').style.opacity = '1';
         document.querySelector('.game_buttonContainer').style.display = 'flex';
         let game = new MemoryGame();
         game.start();
+    }
+
+    document.querySelector('.introduction_button').addEventListener('click', (e) => {
+        handleIntroductionButton();
     });
 
 });
