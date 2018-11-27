@@ -4,7 +4,7 @@ Modified version of popular Memory game for scientists. There are additional fea
 Game is designed to verify and consolidate the knowledge on selected subjects.
 It also improves the memory as the player must recall the localization of proper cards.
 
-**Technology:** CSS3, HTML5, JS and ES6.
+**Technology:** CSS3, HTML5 and JS.
 
 **Installation:** No additional files are required.
 
