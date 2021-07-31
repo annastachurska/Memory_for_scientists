@@ -22,5 +22,7 @@ When proper pair is visible both cards will remain visible.
 **Graphics:** The graphic on the cards was downloaded from
 https://www.iconspng.com/image/3688/funny-green-bactera
 
+Based on https://www.youtube.com/watch?v=ZniVgo8U7ek
+
 **Status:** completed
 
